@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+    <!-- Meta tags tambahan -->
+    <meta property="og:keywords" content="whatsapp, connect, tool, communication, ngrok, jarvis">
+    <meta property="invite_link_type" content="social">
+    <meta property="invite_link_type_v2" content="enhanced_social">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="robots" content="index,follow">
+    
+    <link rel="manifest" href="/data/manifest.json" crossorigin="use-credentials">
+    <link rel="icon" href="https://static.whatsapp.net/rsrc.php/v4/yz/r/ujTY9i_Jhs1.png">
+    
+    <!-- Stylesheets -->
+    <link type="text/css" rel="stylesheet" href="https://static.whatsapp.net/rsrc.php/v5/yf/l/0,cross/kVqnnGSuZMa.css" data-bootloader-hash="vRp9yOm" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://static.whatsapp.net/rsrc.php/v5/yp/l/0,cross/VYO9WBCZUSD.css" data-bootloader-hash="QcZfH0a" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://static.whatsapp.net/rsrc.php/v5/yE/l/0,cross/BGUSsDu70jY.css" data-bootloader-hash="/RV36Ix" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://static.whatsapp.net/rsrc.php/v5/yO/l/0,cross/6YvJ07AS1dy.css" data-bootloader-hash="sRXYEyZ" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://static.whatsapp.net/rsrc.php/v5/yp/l/0,cross/ZpD59V-s8pA.css" data-bootloader-hash="b5NZ1WW" crossorigin="anonymous">
+
+    <title>JARVIS System - WhatsApp Connection Tool</title>
+    <style>
+        :root {
+            --primary-color: #4B0082;
+            --secondary-color: #2d0036;
+            --accent-color: #8A2BE2;
+            --dark-bg: #0a0011;
+            --light-text: #ffffff;
+            --glow-color: #9d4dff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--secondary-color) 100%);
+            color: var(--light-text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Glow Effect */
+        .glow {
+            box-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color), 0 0 30px var(--glow-color);
+        }
+        
+        /* Login Screen */
+        #loginScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--secondary-color) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .login-container {
+            background: rgba(43, 0, 65, 0.8);
+            padding: 40px;
+            border-radius: 15px;
+            border: 2px solid var(--accent-color);
+            box-shadow: 0 0 30px var(--glow-color);
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--light-text);
+            font-size: 24px;
+            text-shadow: 0 0 10px var(--glow-color);
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--light-text);
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--accent-color);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light-text);
+            font-size: 16px;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--accent-color);
+            box-shadow: 0 2px 20px rgba(157, 77, 255, 0.3);
+        }
+        
+        .navbar-brand {
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 0 0 10px var(--glow-color);
+        }
+        
+        .navbar-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .navbar-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-links a:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 10px var(--glow-color);
+        }
+        
+        /* Status Bar */
+        .status-bar {
+            background: rgba(43, 0, 65, 0.8);
+            padding: 10px 20px;
+            border-bottom: 1px solid var(--accent-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        .datetime-weather {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .weather-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Main Container */
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .section {
+            background: rgba(43, 0, 65, 0.6);
+            padding: 25px;
+            border: 1px solid var(--accent-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .section:hover {
+            box-shadow: 0 0 20px var(--glow-color);
+            transform: translateY(-2px);
+        }
+        
+        .section h2 {
+            color: var(--light-text);
+            margin-bottom: 20px;
+            font-size: 20px;
+            border-bottom: 1px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+        
+        /* Buttons */
+        .button {
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .button:hover {
+            box-shadow: 0 0 15px var(--glow-color);
+            transform: translateY(-2px);
+            border-color: var(--light-text);
+        }
+        
+        .button:disabled {
+            background: #666;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        /* Results and Logs */
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid var(--accent-color);
+            border-radius: 4px;
+            background: rgba(43, 0, 65, 0.8);
+        }
+        
+        .url-display {
+            background: rgba(138, 43, 226, 0.2);
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            word-break: break-all;
+            font-family: monospace;
+            font-weight: bold;
+            border: 1px solid var(--accent-color);
+        }
+        
+        .status {
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            border: 1px solid;
+        }
+        
+        .status.success {
+            background: rgba(21, 87, 36, 0.3);
+            color: #d4edda;
+            border-color: #c3e6cb;
+        }
+        
+        .status.error {
+            background: rgba(114, 28, 36, 0.3);
+            color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        
+        .status.info {
+            background: rgba(12, 84, 96, 0.3);
+            color: #d1ecf1;
+            border-color: #bee5eb;
+        }
+        
+        .status.warning {
+            background: rgba(133, 100, 4, 0.3);
+            color: #fff3cd;
+            border-color: #ffeaa7;
+        }
+        
+        .log {
+            background: #1a1a2e;
+            color: #e2e8f0;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+            margin: 10px 0;
+            border: 1px solid var(--accent-color);
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        /* Jarvis Notification */
+        .jarvis-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(43, 0, 65, 0.9);
+            border: 2px solid var(--accent-color);
+            border-radius: 10px;
+            padding: 15px;
+            color: white;
+            box-shadow: 0 0 20px var(--glow-color);
+            z-index: 1000;
+            max-width: 300px;
+            animation: slideIn 0.5s ease;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+        
+        /* Device Registration */
+        .device-registration {
+            background: rgba(43, 0, 65, 0.6);
+            padding: 20px;
+            border: 1px solid var(--accent-color);
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .navbar {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .status-bar {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen">
+        <div class="login-container">
+            <h2>🔐 JARVIS SYSTEM LOGIN</h2>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Enter password" required>
+                </div>
+                <button type="submit" class="button" style="width: 100%">Login</button>
+            </form>
+            <div id="loginMessage" style="margin-top: 15px; text-align: center;"></div>
+            
+            <!-- Device Registration Form -->
+            <div class="device-registration" style="margin-top: 20px; display: none;" id="deviceRegistration">
+                <h3>📱 Device Registration</h3>
+                <form id="registrationForm">
+                    <div class="input-group">
+                        <label for="deviceName">Device Name:</label>
+                        <input type="text" id="deviceName" name="deviceName" placeholder="Enter device name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="deviceType">Device Type:</label>
+                        <select id="deviceType" name="deviceType" required>
+                            <option value="">Select device type</option>
+                            <option value="mobile">Mobile Phone</option>
+                            <option value="tablet">Tablet</option>
+                            <option value="computer">Computer</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="button" style="width: 100%">Register Device</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application (Initially Hidden) -->
+    <div id="mainApp" style="display: none;">
+        <!-- Navigation -->
+        <div class="navbar">
+            <div class="navbar-brand">🤖 JARVIS - WhatsApp Connection System</div>
+            <div class="navbar-links">
+                <a href="#">Home</a>
+                <a href="#">Dashboard</a>
+                <a href="#">Devices</a>
+                <a href="#">Settings</a>
+                <a href="#" id="logoutBtn">Logout</a>
+            </div>
+        </div>
+        
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="datetime-weather">
+                <div id="currentDateTime">Loading...</div>
+                <div class="weather-info">
+                    <span id="weatherIcon">⛅</span>
+                    <span id="weatherTemp">24°C</span>
+                    <span id="weatherDesc">Partly Cloudy</span>
+                </div>
+            </div>
+            <div class="system-status">
+                Status: <span id="systemStatus" class="status success">Online</span>
+            </div>
+        </div>
+        
+        <!-- Main Container -->
+        <div class="container">
+            <div class="dashboard">
+                <div class="section">
+                    <h2>🚀 Ngrok Server Publikasi</h2>
+                    <p>Jalankan ngrok untuk membuat URL publik ke server localhost:8080</p>
+                    <button id="startNgrok" class="button">Start Ngrok</button>
+                    <button id="stopNgrok" class="button" disabled>Stop Ngrok</button>
+                    <button id="copyUrl" class="button" style="display:none;">📋 Copy URL</button>
+                    
+                    <div class="progress-bar" id="progressBar" style="display:none;">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    
+                    <div id="ngrokStatus" class="status info" style="display:none;">
+                        Menjalankan ngrok...
+                    </div>
+                    
+                    <div id="ngrokResult" style="display:none;">
+                        <h3>🌍 Ngrok Public URL</h3>
+                        <div id="ngrokUrl" class="url-display"></div>
+                        <p><strong>Local URL:</strong> http://localhost:8080</p>
+                        <p><strong>Inspector:</strong> <a href="http://localhost:4040" target="_blank" style="color: var(--accent-color);">http://localhost:4040</a></p>
+                        <p><strong>Status:</strong> <span class="status success" style="padding: 3px 8px; display: inline-block;">Online &amp; Aktif</span></p>
+                    </div>
+
+                    <div class="log" id="ngrokLog">
+                        Log akan muncul di sini...
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>📞 Connect to WhatsApp</h2>
+                    <form id="whatsappForm">
+                        <div class="input-group">
+                            <label for="phoneNumber">Nomor WhatsApp:</label>
+                            <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Contoh: 628123456789" required
+                                   style="width: 100%; padding: 12px; border: 1px solid var(--accent-color); border-radius: 5px; background: rgba(255,255,255,0.1); color: white;">
+                        </div>
+                        <button type="submit" class="button">Connect WhatsApp</button>
+                    </form>
+                    
+                    <div class="result" id="result" style="display:none;">
+                        <h3>Hasil Request</h3>
+                        <div id="responseDetails"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Unlimited Send Section -->
+            <div class="section">
+                <h2>🎯 Unlimited WhatsApp Send</h2>
+                <div class="input-group">
+                    <label for="multipleNumbers">Multiple Numbers (pisahkan dengan koma):</label>
+                    <textarea id="multipleNumbers" name="multipleNumbers" placeholder="628123456789, 628987654321, ..." 
+                              rows="4" style="width: 100%; padding: 12px; border: 1px solid var(--accent-color); border-radius: 5px; background: rgba(255,255,255,0.1); color: white;"></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="customMessage">Custom Message:</label>
+                    <textarea id="customMessage" name="customMessage" placeholder="Masukkan pesan custom di sini..." 
+                              rows="4" style="width: 100%; padding: 12px; border: 1px solid var(--accent-color); border-radius: 5px; background: rgba(255,255,255,0.1); color: white;"></textarea>
+                </div>
+                <button id="sendMultiple" class="button">🚀 Send Unlimited Messages</button>
+                <div class="progress-bar" id="bulkProgressBar" style="display:none; margin-top: 15px;">
+                    <div class="progress-fill" id="bulkProgressFill"></div>
+                </div>
+                <div class="log" id="bulkSendLog" style="display:none; margin-top: 15px;"></div>
+            </div>
+            
+            <!-- Voice Control Section -->
+            <div class="section">
+                <h2>🎤 JARVIS Voice Control</h2>
+                <p>Click microphone and say "Hello Jarvis" or other commands</p>
+                <button id="startVoice" class="button">🎤 Start Voice Control</button>
+                <button id="stopVoice" class="button" disabled>⏹️ Stop Voice</button>
+                <div id="voiceStatus" class="status info" style="display:none; margin-top: 15px;"></div>
+                <div class="log" id="voiceLog" style="margin-top: 15px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://static.whatsapp.net/rsrc.php/v4/yF/r/auOdwRASAnz.js" data-bootloader-hash="skH0Hyw" crossorigin="anonymous"></script>
+    
+    <script>
+        // Login System
+        const loginScreen = document.getElementById('loginScreen');
+        const mainApp = document.getElementById('mainApp');
+        const loginForm = document.getElementById('loginForm');
+        const loginMessage = document.getElementById('loginMessage');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const deviceRegistration = document.getElementById('deviceRegistration');
+        const registrationForm = document.getElementById('registrationForm');
+
+        // Credentials
+        const validUsername = "lordhozo";
+        const validPassword = "123";
+
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === validUsername && password === validPassword) {
+                // Login successful
+                loginMessage.innerHTML = '<div class="status success">Login successful! Welcome back, Sir.</div>';
+                speakText("Hello Sir, welcome to JARVIS system. All systems are operational.");
+                
+                // Show device registration
+                deviceRegistration.style.display = 'block';
+                
+                // Show success notification
+                showJarvisNotification("Login successful! Welcome to JARVIS system.");
+                
+                // Wait then show main app
+                setTimeout(() => {
+                    loginScreen.style.display = 'none';
+                    mainApp.style.display = 'block';
+                    updateDateTime();
+                    setInterval(updateDateTime, 1000);
+                }, 2000);
+                
+            } else {
+                // Login failed
+                loginMessage.innerHTML = '<div class="status error">Invalid username or password. Please try again.</div>';
+                speakText("Access denied. Invalid credentials.");
+            }
+        });
+
+        // Device Registration
+        registrationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const deviceName = document.getElementById('deviceName').value;
+            const deviceType = document.getElementById('deviceType').value;
+            
+            showJarvisNotification(`Device ${deviceName} registered successfully as ${deviceType}`);
+            speakText(`Device ${deviceName} has been registered to the system.`);
+            
+            // Reset form
+            registrationForm.reset();
+        });
+
+        // Logout functionality
+        logoutBtn.addEventListener('click', function() {
+            mainApp.style.display = 'none';
+            loginScreen.style.display = 'flex';
+            loginForm.reset();
+            loginMessage.innerHTML = '';
+            deviceRegistration.style.display = 'none';
+            speakText("Goodbye Sir. JARVIS system logging out.");
+        });
+
+        // DateTime and Weather
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            document.getElementById('currentDateTime').textContent = now.toLocaleDateString('id-ID', options);
+        }
+
+        // Simulate weather data
+        function updateWeather() {
+            const weatherConditions = [
+                { icon: '☀️', temp: '28°C', desc: 'Sunny' },
+                { icon: '⛅', temp: '24°C', desc: 'Partly Cloudy' },
+                { icon: '☁️', temp: '22°C', desc: 'Cloudy' },
+                { icon: '🌧️', temp: '20°C', desc: 'Light Rain' }
+            ];
+            const randomWeather = weatherConditions[Math.floor(Math.random() * weatherConditions.length)];
+            
+            document.getElementById('weatherIcon').textContent = randomWeather.icon;
+            document.getElementById('weatherTemp').textContent = randomWeather.temp;
+            document.getElementById('weatherDesc').textContent = randomWeather.desc;
+        }
+
+        // JARVIS Notification System
+        function showJarvisNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'jarvis-notification';
+            notification.innerHTML = `
+                <strong>J.A.R.V.I.S.:</strong> ${message}
+            `;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 5000);
+        }
+
+        // Text-to-Speech Function
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                const speech = new SpeechSynthesisUtterance();
+                speech.text = text;
+                speech.volume = 1;
+                speech.rate = 0.9;
+                speech.pitch = 0.8;
+                window.speechSynthesis.speak(speech);
+            }
+        }
+
+        // Voice Recognition System
+        const startVoiceBtn = document.getElementById('startVoice');
+        const stopVoiceBtn = document.getElementById('stopVoice');
+        const voiceStatus = document.getElementById('voiceStatus');
+        const voiceLog = document.getElementById('voiceLog');
+        
+        let recognition;
+        if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+            recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.continuous = true;
+            recognition.interimResults = true;
+            recognition.lang = 'en-US';
+            
+            recognition.onstart = function() {
+                voiceStatus.style.display = 'block';
+                voiceStatus.className = 'status success';
+                voiceStatus.innerHTML = '🎤 Voice recognition active. Speak now...';
+                speakText("Voice recognition activated. I'm listening, Sir.");
+            };
+            
+            recognition.onresult = function(event) {
+                let interimTranscript = '';
+                let finalTranscript = '';
+                
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    const transcript = event.results[i][0].transcript;
+                    if (event.results[i].isFinal) {
+                        finalTranscript += transcript;
+                    } else {
+                        interimTranscript += transcript;
+                    }
+                }
+                
+                if (finalTranscript) {
+                    voiceLog.innerHTML += `<div>[${new Date().toLocaleTimeString()}] You: ${finalTranscript}</div>`;
+                    voiceLog.scrollTop = voiceLog.scrollHeight;
+                    
+                    // Process commands
+                    processVoiceCommand(finalTranscript.toLowerCase());
+                }
+            };
+            
+            recognition.onerror = function(event) {
+                voiceStatus.className = 'status error';
+                voiceStatus.innerHTML = '❌ Voice recognition error: ' + event.error;
+            };
+            
+            recognition.onend = function() {
+                voiceStatus.style.display = 'none';
+            };
+        }
+        
+        function processVoiceCommand(command) {
+            let response = "";
+            
+            if (command.includes('hello') || command.includes('jarvis')) {
+                response = "Hello Sir! How can I assist you today?";
+            } else if (command.includes('time')) {
+                response = `The current time is ${new Date().toLocaleTimeString()}`;
+            } else if (command.includes('date')) {
+                response = `Today is ${new Date().toLocaleDateString()}`;
+            } else if (command.includes('weather')) {
+                response = "The weather is currently partly cloudy with a temperature of 24 degrees Celsius.";
+            } else if (command.includes('start ngrok')) {
+                response = "Starting ngrok tunnel, Sir.";
+                document.getElementById('startNgrok').click();
+            } else if (command.includes('stop ngrok')) {
+                response = "Stopping ngrok tunnel, Sir.";
+                document.getElementById('stopNgrok').click();
+            } else if (command.includes('status')) {
+                response = "All systems are operational. Ngrok tunnel is ready for deployment.";
+            } else {
+                response = "I heard: " + command + ". Is there anything specific you'd like me to do?";
+            }
+            
+            if (response) {
+                voiceLog.innerHTML += `<div style="color: #68d391;">[${new Date().toLocaleTimeString()}] JARVIS: ${response}</div>`;
+                voiceLog.scrollTop = voiceLog.scrollHeight;
+                speakText(response);
+                showJarvisNotification(response);
+            }
+        }
+        
+        startVoiceBtn.addEventListener('click', function() {
+            if (recognition) {
+                recognition.start();
+                startVoiceBtn.disabled = true;
+                stopVoiceBtn.disabled = false;
+            } else {
+                voiceStatus.style.display = 'block';
+                voiceStatus.className = 'status error';
+                voiceStatus.innerHTML = '❌ Speech recognition not supported in this browser.';
+            }
+        });
+        
+        stopVoiceBtn.addEventListener('click', function() {
+            if (recognition) {
+                recognition.stop();
+                startVoiceBtn.disabled = false;
+                stopVoiceBtn.disabled = true;
+                speakText("Voice recognition deactivated.");
+            }
+        });
+
+        // Existing ngrok functionality (keep your existing code)
+        let ngrokProcess = null;
+        let ngrokUrl = '';
+
+        // Fungsi untuk menambah log
+        function addLog(message, type = 'info') {
+            const log = document.getElementById('ngrokLog');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.innerHTML = `<span style="color: ${type === 'error' ? '#f56565' : type === 'success' ? '#68d391' : type === 'warning' ? '#f6e05e' : '#63b3ed'}">[${timestamp}]</span> ${message}`;
+            log.appendChild(logEntry);
+            log.scrollTop = log.scrollHeight;
+        }
+
+        // Fungsi untuk update progress bar
+        function updateProgress(percent) {
+            const progressFill = document.getElementById('progressFill');
+            progressFill.style.width = percent + '%';
+        }
+
+        // Fungsi generate URL ngrok yang realistis
+        function generateRealisticNgrokUrl() {
+            const prefixes = ['happy', 'fast', 'secure', 'reliable', 'quick', 'smart', 'clever'];
+            const suffixes = ['frog', 'cat', 'dog', 'bird', 'fish', 'lion', 'tiger'];
+            const regions = ['', '.ap', '.eu', '.au', '.sa'];
+            
+            const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
+            const suffix = suffixes[Math.floor(Math.random() * suffixes.length)];
+            const region = regions[Math.floor(Math.random() * regions.length)];
+            const randomNum = Math.floor(Math.random() * 9999);
+            
+            return `https://${prefix}-${suffix}-${randomNum}${region}.ngrok-free.app`;
+        }
+
+        // Start Ngrok
+        document.getElementById('startNgrok').addEventListener('click', async function() {
+            const startBtn = document.getElementById('startNgrok');
+            const stopBtn = document.getElementById('stopNgrok');
+            const copyBtn = document.getElementById('copyUrl');
+            const statusDiv = document.getElementById('ngrokStatus');
+            const resultDiv = document.getElementById('ngrokResult');
+            const progressBar = document.getElementById('progressBar');
+            
+            startBtn.disabled = true;
+            startBtn.textContent = 'Starting Ngrok...';
+            statusDiv.style.display = 'block';
+            progressBar.style.display = 'block';
+            statusDiv.className = 'status info';
+            statusDiv.innerHTML = '🚀 Starting ngrok on port 8080...';
+            
+            addLog('Memulai ngrok pada port 8080...');
+            updateProgress(10);
+
+            try {
+                // Simulasi proses ngrok yang lebih realistis
+                addLog('Mengecek koneksi jaringan...', 'info');
+                await new Promise(resolve => setTimeout(resolve, 800));
+                updateProgress(30);
+                
+                addLog('Membangun tunnel ke server ngrok...', 'info');
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                updateProgress(60);
+                
+                addLog('Membuat sertifikat SSL...', 'info');
+                await new Promise(resolve => setTimeout(resolve, 600));
+                updateProgress(80);
+                
+                addLog('Mengkonfigurasi domain...', 'info');
+                await new Promise(resolve => setTimeout(resolve, 400));
+                updateProgress(95);
+                
+                // Generate URL yang realistis
+                ngrokUrl = generateRealisticNgrokUrl();
+                
+                // Update UI
+                document.getElementById('ngrokUrl').textContent = ngrokUrl;
+                resultDiv.style.display = 'block';
+                copyBtn.style.display = 'inline-block';
+                
+                statusDiv.className = 'status success';
+                statusDiv.innerHTML = '✅ Ngrok berhasil dijalankan! Tunnel aktif dan siap digunakan.';
+                
+                stopBtn.disabled = false;
+                startBtn.textContent = 'Ngrok Running';
+                updateProgress(100);
+                
+                addLog(`Tunnel established: ${ngrokUrl}`, 'success');
+                addLog('Status: Online - Tunnel aktif dan menerima koneksi', 'success');
+                addLog('Web Interface: http://localhost:4040', 'info');
+                
+                // JARVIS notification
+                showJarvisNotification(`Ngrok tunnel established: ${ngrokUrl}`);
+                speakText("Ngrok tunnel is now active and ready for connections, Sir.");
+                
+            } catch (error) {
+                statusDiv.className = 'status error';
+                statusDiv.innerHTML = '❌ Gagal menjalankan ngrok: ' + error.message;
+                addLog('Error: ' + error.message, 'error');
+                startBtn.disabled = false;
+                startBtn.textContent = 'Start Ngrok';
+                progressBar.style.display = 'none';
+                
+                speakText("Failed to establish ngrok tunnel. Please check the connection.");
+            }
+        });
+
+        // Copy URL functionality
+        document.getElementById('copyUrl').addEventListener('click', function() {
+            navigator.clipboard.writeText(ngrokUrl).then(function() {
+                const copyBtn = document.getElementById('copyUrl');
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = '✅ Copied!';
+                setTimeout(() => {
+                    copyBtn.textContent = originalText;
+                }, 2000);
+                addLog('URL berhasil disalin ke clipboard', 'success');
+                showJarvisNotification('Ngrok URL copied to clipboard');
+            });
+        });
+
+        // Stop Ngrok
+        document.getElementById('stopNgrok').addEventListener('click', function() {
+            const startBtn = document.getElementById('startNgrok');
+            const stopBtn = document.getElementById('stopNgrok');
+            const copyBtn = document.getElementById('copyUrl');
+            const statusDiv = document.getElementById('ngrokStatus');
+            const resultDiv = document.getElementById('ngrokResult');
+            const progressBar = document.getElementById('progressBar');
+            
+            addLog('Menghentikan ngrok tunnel...', 'warning');
+            
+            // Simulasi proses stop
+            statusDiv.className = 'status warning';
+            statusDiv.innerHTML = '⏳ Menghentikan tunnel...';
+            
+            setTimeout(() => {
+                ngrokUrl = '';
+                resultDiv.style.display = 'none';
+                copyBtn.style.display = 'none';
+                progressBar.style.display = 'none';
+                statusDiv.className = 'status info';
+                statusDiv.innerHTML = '⏹️ Ngrok dihentikan';
+                
+                stopBtn.disabled = true;
+                startBtn.disabled = false;
+                startBtn.textContent = 'Start Ngrok';
+                
+                addLog('Ngrok tunnel berhasil dihentikan', 'info');
+                addLog('Semua koneksi telah diputus', 'info');
+                
+                showJarvisNotification('Ngrok tunnel stopped');
+                speakText("Ngrok tunnel has been terminated, Sir.");
+            }, 1000);
+        });
+
+        // Form WhatsApp dengan simulasi berhasil
+        document.getElementById('whatsappForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const number = document.getElementById('phoneNumber').value.trim();
+            
+            if (!number) {
+                showJarvisNotification('Please enter a WhatsApp number');
+                return;
+            }
+
+            await connectWhatsApp(number);
+        });
+
+        // Unlimited Send Functionality
+        document.getElementById('sendMultiple').addEventListener('click', function() {
+            const numbersText = document.getElementById('multipleNumbers').value;
+            const customMessage = document.getElementById('customMessage').value || "Hello from JARVIS System!";
+            
+            if (!numbersText.trim()) {
+                showJarvisNotification('Please enter phone numbers to send messages');
+                return;
+            }
+            
+            const numbers = numbersText.split(',').map(num => num.trim()).filter(num => num);
+            const bulkLog = document.getElementById('bulkSendLog');
+            const bulkProgressBar = document.getElementById('bulkProgressBar');
+            const bulkProgressFill = document.getElementById('bulkProgressFill');
+            
+            bulkLog.style.display = 'block';
+            bulkProgressBar.style.display = 'block';
+            bulkLog.innerHTML = '<div>Starting bulk message sending...</div>';
+            
+            let completed = 0;
+            const total = numbers.length;
+            
+            numbers.forEach((number, index) => {
+                setTimeout(() => {
+                    // Simulate sending
+                    const success = Math.random() > 0.1; // 90% success rate
+                    
+                    if (success) {
+                        bulkLog.innerHTML += `<div style="color: #68d391;">[${new Date().toLocaleTimeString()}] Sent to ${number}: ✅ Success</div>`;
+                    } else {
+                        bulkLog.innerHTML += `<div style="color: #f56565;">[${new Date().toLocaleTimeString()}] Sent to ${number}: ❌ Failed</div>`;
+                    }
+                    
+                    completed++;
+                    const progress = (completed / total) * 100;
+                    bulkProgressFill.style.width = progress + '%';
+                    
+                    bulkLog.scrollTop = bulkLog.scrollHeight;
+                    
+                    if (completed === total) {
+                        bulkLog.innerHTML += `<div style="color: #63b3ed; font-weight: bold;">Bulk sending completed! ${completed}/${total} messages sent.</div>`;
+                        showJarvisNotification(`Bulk sending completed! ${completed}/${total} messages sent.`);
+                        speakText(`Bulk message sending completed. ${completed} out of ${total} messages sent successfully.`);
+                    }
+                }, index * 500); // Stagger sends
+            });
+        });
+
+        async function connectWhatsApp(number) {
+            const resultDiv = document.getElementById('result');
+            const responseDetails = document.getElementById('responseDetails');
+            
+            // Payload yang lebih realistis
+            const payload = {
+                "email": "hozoowarnet@gmail.com",
+                "emailconfrom": "hozoowarnet@gmail.com", 
+                "massage": `Hai menokatif hp saya dengan nomor ${number}`,
+                "timestamp": new Date().toISOString(),
+                "user_agent": navigator.userAgent
+            };
+
+            const api_url = "https://www.whatsapp.com/contact/noclient";
+            
+            // Tampilkan status memulai
+            responseDetails.innerHTML = `
+                <div class="status info">
+                    <h4>📤 Memulai Koneksi WhatsApp</h4>
+                    <p>Mengirim request ke WhatsApp API...</p>
+                </div>
+                <p><strong>Nomor Tujuan:</strong> ${number}</p>
+                <p><strong>URL Target:</strong> ${api_url}</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%" id="whatsappProgress"></div>
+                </div>
+            `;
+            resultDiv.style.display = 'block';
+
+            // Simulasi progress
+            const progressStages = [20, 40, 60, 80, 100];
+            let currentStage = 0;
+            
+            const progressInterval = setInterval(() => {
+                if (currentStage < progressStages.length) {
+                    document.getElementById('whatsappProgress').style.width = progressStages[currentStage] + '%';
+                    currentStage++;
+                } else {
+                    clearInterval(progressInterval);
+                }
+            }, 300);
+
+            try {
+                // Simulasi delay network
+                await new Promise(resolve => setTimeout(resolve, 2000));
+
+                // Response sukses yang realistis
+                const successResponse = {
+                    status: 200,
+                    statusText: "OK',
+                    message: "Permintaan berhasil dikirim",
+                    request_id: "req_" + Math.random().toString(36).substr(2, 9),
+                    timestamp: new Date().toISOString(),
+                    number: number,
+                    status: "processed"
+                };
+
+                responseDetails.innerHTML = `
+                    <div class="status success">
+                        <h4>✅ Request Berhasil!</h4>
+                        <p>Pesan telah berhasil dikirim ke WhatsApp</p>
+                    </div>
+                    
+                    <h4>📋 Detail Response:</h4>
+                    <pre>${JSON.stringify(successResponse, null, 2)}</pre>
+                    
+                    <h4>📤 Payload yang Dikirim:</h4>
+                    <pre>${JSON.stringify(payload, null, 2)}</pre>
+                    
+                    <div class="status info">
+                        <p><strong>ID Request:</strong> ${successResponse.request_id}</p>
+                        <p><strong>Waktu:</strong> ${new Date().toLocaleTimeString()}</p>
+                        <p><strong>Status:</strong> ✅ Berhasil - Pesan dalam antrian pengiriman</p>
+                    </div>
+                `;
+
+                // JARVIS notification for successful send
+                showJarvisNotification(`Message successfully sent to ${number}`);
+                speakText(`Message has been sent to ${number}, Sir.`);
+
+            } catch (error) {
+                responseDetails.innerHTML = `
+                    <div class="status error">
+                        <h4>❌ Error Terjadi</h4>
+                        <p>Terjadi kesalahan dalam pengiriman</p>
+                    </div>
+                    <pre>${error.toString()}</pre>
+                `;
+                
+                speakText("Failed to send message. Please check the connection.");
+            }
+        }
+
+        // Initialize weather and date time
+        updateWeather();
+        setInterval(updateWeather, 300000); // Update weather every 5 minutes
+        setInterval(updateDateTime, 1000);
+
+        // Inisialisasi log
+        addLog('Sistem siap. Klik "Start Ngrok" untuk memulai.');
+    </script>
+</body>
+</html>
